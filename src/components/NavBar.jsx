@@ -4,7 +4,7 @@ import {  NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="navbar p-4 flex justify-between items-center mx-auto border-b border-red-200 bg-indigo-200 rounded m-2 ">
+    <nav className="navbar p-4 flex justify-between items-center mx-auto border-4 border-red-200 bg-indigo-200 rounded m-2 ">
       <h1 className="text-blue-400 text-2xl font-bold">Fitness Tracker</h1>
       <div>
         <NavLink
