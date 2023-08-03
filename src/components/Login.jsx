@@ -6,7 +6,6 @@ const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
 const Login = () => {
     const { setIsLoggedIn, setUser } = useOutletContext();
     const { setToken } = useOutletContext();
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     //reroute user after loggin in
@@ -25,7 +24,7 @@ const Login = () => {
           }),
         });
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         if (result.user) {
           setIsLoggedIn(true);
           setToken(result.token);
