@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Link, NavLink } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
 
 const Login = () => {
   return (
