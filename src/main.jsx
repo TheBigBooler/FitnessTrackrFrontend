@@ -4,13 +4,28 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Root from './routes/root.jsx';
 import Home from './components/Home';
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Routines from "./components/Routines";
+import Activities from "./components/Activities";
+import RoutinesByUser from "./components/RoutinesByUser";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Root />,
+  {
+    path: "/",
+    element: <Root />,
     children: [
-      { path: "/", element: <Home />}
-    ] },
-])
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+      { path: "/routines", element: <Routines /> },
+      { path: "/activities", element: <Activities /> },
+      { path: "/routines/:username", element: <RoutinesByUser /> },
+      // { path: "/", element: <Home /> },
+      // { path: "/", element: <Home /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
