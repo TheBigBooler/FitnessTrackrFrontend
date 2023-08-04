@@ -80,8 +80,8 @@ const Register = () => {
             placeholder="Choose a password"
             value={newPassword}
             onChange={(event) => setNewPassword(event.target.value)}
-            minLength="4"
-            maxLength="15"
+            minLength="8"
+            maxLength="20"
             required
           />
         </div>
@@ -94,8 +94,8 @@ const Register = () => {
             placeholder="Retype password"
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
-            minLength="4"
-            maxLength="15"
+            minLength="8"
+            maxLength="20"
             required
           />
         </div>
