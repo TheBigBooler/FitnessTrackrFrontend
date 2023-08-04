@@ -28,7 +28,6 @@ const Routines = () => {
   }
   return (
     <>
-      <h2>Routines Page:</h2>
       <div>
         {routines.length &&
         routines.map((routine) => {
