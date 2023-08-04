@@ -70,3 +70,15 @@ export const updateActivity = async (
   }
 };
 
+
+
+
+export async function getAllActivities() {
+    try {
+        const response = await fetch(`${API_URL}/activities`)
+        const result = await response.json();
+        return result;
+    } catch (err) {
+        console.error(err)
+    } throw err;
+};

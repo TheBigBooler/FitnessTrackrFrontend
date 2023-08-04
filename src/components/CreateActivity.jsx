@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import { createActivity } from '../api';
+import { createActivity,updateActivity } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 const CreateActivity = () => {
 
 const [name ,setName] = useState("");
 const [description, setDescription] = useState("");
+const [message, setMessage] = useState("");
 const navigate = useNavigate();
 
 
@@ -17,27 +18,25 @@ const handleDescription = (e) =>{
     setDescription(e.target.value);
 };
 
-const handleSubmit = (e) =>{
-    e.preventDefault();
-    const handleCreateActivity = async () =>{
-        try {
-           const response = await createActivity( name, description); 
-        } catch (error) {
-            if(error.response.status === 403){
-                alert ("This activity already exists");
-            }else{
-                console.error(`Error creating activity`);
-                throw error;
-            }
-            
-        }
-    };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const handleCreateActivity = async () => {
+    try {
+      const response = await createActivity(name, description);
+      if (response.error) {
+        alert("This activity already exists");
+      } else {
+        setMessage(`Activity ${response.name} added successfully`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-handleCreateActivity(name, description);
-setName("");
-setDescription("");
-navigate("/activities");
-
+  handleCreateActivity(name, description);
+  setName("");
+  setDescription("");
+  navigate("/activities");
 };
 
 
