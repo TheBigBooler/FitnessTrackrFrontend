@@ -28,6 +28,7 @@ const Register = () => {
       if (result) {
         setIsLoggedIn(true);
         setToken(result.token);
+        localStorage.setItem("token", result.token);
         setUser(result.user.username);
         navigate("/");
       } else {

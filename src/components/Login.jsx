@@ -24,10 +24,11 @@ const Login = () => {
           }),
         });
         const result = await response.json();
-        // console.log(result);
+        console.log(result);
         if (result.user) {
           setIsLoggedIn(true);
           setToken(result.token);
+          localStorage.setItem("token",result.token);
           setUser(result.user.username);
           navigate("/");
         } else {
