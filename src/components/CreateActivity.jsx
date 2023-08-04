@@ -24,7 +24,7 @@ const handleSubmit = async (e) => {
     try {
       const response = await createActivity(name, description);
       if (response.error) {
-        alert("This activity already exists");
+        alert("This activity already exists!!!");
       } else {
         setMessage(`Activity ${response.name} added successfully`);
       }
