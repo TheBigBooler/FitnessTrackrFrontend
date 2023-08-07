@@ -96,7 +96,30 @@ const RoutinesByUser = () => {
                         - {activity.count}x {activity.name}{" "}
                         <span>for {activity.duration} minutes</span>
                       </p>
-                      <p className="ml-3 mb-2">{activity.description}</p>
+                      <p className="ml-3">{activity.description}</p>
+                      <button className="underline ml-3 mb-2"
+                      onClick={ async () => {
+                        try {
+                          const response = await fetch(
+                            `${API_URL}routine_activities/${activity.routineActivityId}`,
+                            {
+                              method: "DELETE",
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${token}`,
+                              },
+                            }
+                          );
+                          const result = await response.json();
+                          console.log(result);
+                          return result;
+                        } catch (err) {
+                          alert("Activity removal unsuccessful")
+                          console.error(err);
+                        } finally {
+                          getRoutinesByUser();
+                        }
+                      }}>remove {activity.name} from {routine.name}</button>
                     </>
                   );
                 })}
