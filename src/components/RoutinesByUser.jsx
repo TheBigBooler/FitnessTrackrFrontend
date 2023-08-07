@@ -106,44 +106,6 @@ const RoutinesByUser = () => {
                 routine={routine}
                 getRoutinesByUser={getRoutinesByUser}
               />
-              {/* <form
-                onSubmit={() => {
-                  console.log(addActivity);
-                }}
-              >
-                <label htmlFor="activity-select" className="m-1">
-                  Add activity:
-                </label>
-                <select name="activities">
-                  <option value="">choose an activity</option>
-                  {activities.map((activity) => {
-                    return (
-                      <option value={activity.name} key={activity.id}>
-                        {activity.name}
-                      </option>
-                    );
-                  })}
-                </select>
-                <label htmlFor="count" className="m-1">
-                  Count:
-                </label>
-                <input
-                  className="w-12"
-                  type="text"
-                  value={newRoutine.goal}
-                  onChange={handleChange}
-                ></input>
-                <label htmlFor="duration" className="m-1">
-                  Duration:
-                </label>
-                <input className="w-12"></input>
-                <button
-                  type="submit"
-                  className="m-1 border-red-200 bg-indigo-200 rounded ml-4 underline"
-                >
-                  add to {routine.name}
-                </button>
-              </form> */}
             </div>
           );
         }
