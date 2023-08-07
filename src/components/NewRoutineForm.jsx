@@ -47,19 +47,23 @@ const NewRoutineForm = ({ token, getRoutinesByUser }) => {
     return (
       <form className="flex-col text-center" onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" className="font-bold">
+            Name:
+          </label>
           <input
             id="name"
-            className="border-black border-2 text-black"
+            className="m-4 border-red-200 bg-indigo-200 border-2 rounded font-bold p-1"
             required
             type="text"
             value={newRoutine.name}
             onChange={handleChange}
           ></input>
-          <label htmlFor="goal">Goal:</label>
+          <label htmlFor="goal" className="font-bold">
+            Goal:
+          </label>
           <input
             id="goal"
-            className="border-black border-2 text-black"
+            className="m-4 border-red-200 bg-indigo-200 border-2 rounded font-bold p-1"
             required
             type="text"
             value={newRoutine.goal}
@@ -69,11 +73,10 @@ const NewRoutineForm = ({ token, getRoutinesByUser }) => {
         <div>
           <button
             type="submit"
-            className="border-black border-4 mt-5 mb-5 mr-5"
+            className="m-4 border-red-200 bg-indigo-200 border-2 rounded font-bold p-1"
           >
             Create Routine
           </button>
-          
         </div>
       </form>
     );

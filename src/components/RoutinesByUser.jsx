@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useOutletContext } from "react-router-dom";
 import NewRoutineForm from "./NewRoutineForm";
+import AddActivityForm from "./AddActivityForm";
 
 const API_URL = "https://fitnesstrac-kr.herokuapp.com/api/";
 
@@ -8,11 +9,12 @@ const RoutinesByUser = () => {
   const { token, user } = useOutletContext();
   const [routines, setRoutines] = useState([]);
   const [activities, setActivities] = useState([]);
-  const [addActivity, setAddActivitiy] = useState({});
   const [updatedActivity, setUpdatedActivity] = useState({});
+  
   
   useEffect(() => {
     getRoutinesByUser();
+    getActivities();
   }, [])
 
   const getRoutinesByUser = async () => {
@@ -39,11 +41,38 @@ const RoutinesByUser = () => {
     }
   }
 
+  const getActivities = async () => {
+    try {
+      const request = await fetch(`${API_URL}activities`, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      const result = await request.json();
+      result.sort((a, b) => {
+        const activityA = a.name.toUpperCase();
+        const activityB = b.name.toUpperCase();
+        if (activityA < activityB) {
+          return -1
+        }
+        if (activityA >= activityB) {
+          return 1
+        }
+      })
+      console.log(result);
+      setActivities(result);
+
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
+  }
+
 
   return (
     <>
-      <h1 className="text-center">My routines</h1>
       <NewRoutineForm token={token} getRoutinesByUser={getRoutinesByUser}/>
+      <h1 className="text-center text-2xl mt-8">My routines</h1>
       {routines.map((routine, index) => {
         if (routine.message) {
           return (
@@ -72,6 +101,49 @@ const RoutinesByUser = () => {
                   );
                 })}
               </div>
+              <AddActivityForm
+                activities={activities}
+                routine={routine}
+                getRoutinesByUser={getRoutinesByUser}
+              />
+              {/* <form
+                onSubmit={() => {
+                  console.log(addActivity);
+                }}
+              >
+                <label htmlFor="activity-select" className="m-1">
+                  Add activity:
+                </label>
+                <select name="activities">
+                  <option value="">choose an activity</option>
+                  {activities.map((activity) => {
+                    return (
+                      <option value={activity.name} key={activity.id}>
+                        {activity.name}
+                      </option>
+                    );
+                  })}
+                </select>
+                <label htmlFor="count" className="m-1">
+                  Count:
+                </label>
+                <input
+                  className="w-12"
+                  type="text"
+                  value={newRoutine.goal}
+                  onChange={handleChange}
+                ></input>
+                <label htmlFor="duration" className="m-1">
+                  Duration:
+                </label>
+                <input className="w-12"></input>
+                <button
+                  type="submit"
+                  className="m-1 border-red-200 bg-indigo-200 rounded ml-4 underline"
+                >
+                  add to {routine.name}
+                </button>
+              </form> */}
             </div>
           );
         }

@@ -79,6 +79,7 @@ export async function getAllActivities() {
         const result = await response.json();
         return result;
     } catch (err) {
-        console.error(err)
-    } throw err;
+      console.error(err)
+      throw err;
+    } 
 };
