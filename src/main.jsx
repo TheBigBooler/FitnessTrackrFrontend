@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Routines from "./components/Routines";
 import Activities from "./components/Activities";
 import RoutinesByUser from "./components/RoutinesByUser";
+import CreateActivity from './components/CreateActivity';
 
 const router = createBrowserRouter([
   {
@@ -19,8 +20,9 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/routines", element: <Routines /> },
-      { path: "/activities", element: <Activities /> },
+      { path: "/activities/", element: <Activities /> },
       { path: "/routines/:username", element: <RoutinesByUser /> },
+      { path: "/activities/CreateActivity", element: <CreateActivity/> },
       // { path: "/", element: <Home /> },
       // { path: "/", element: <Home /> },
     ],

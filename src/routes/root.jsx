@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "../components/NavBar";
-import { Outlet } from "react-router-dom";
+import { Outlet, UNSAFE_DataRouterStateContext, useNavigate } from "react-router-dom";
+
 
 const Root = () => {
      const [isLoggedIn, setIsLoggedIn] = useState(false);
      const [user, setUser] = useState("");
      const [token, setToken] = useState("");
+     
     return (
       <>
         <Navigation
