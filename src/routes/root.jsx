@@ -7,6 +7,21 @@ const Root = () => {
      const [isLoggedIn, setIsLoggedIn] = useState(false);
      const [user, setUser] = useState("");
      const [token, setToken] = useState("");
+
+    //check for token in local storage
+    const checkLocalStorage = () => {
+    const checkToken = localStorage.getItem("token");
+    const checkUser = localStorage.getItem("user");
+    if (checkToken && checkUser) {
+      console.log(checkUser, checkToken);
+      setToken(checkToken);
+      setUser(checkUser);
+      setIsLoggedIn(true);
+    }
+  }
+  useEffect(() => {
+    checkLocalStorage()
+  })
      
     return (
       <>
@@ -27,6 +42,7 @@ const Root = () => {
               setUser,
               token,
               setToken,
+              checkLocalStorage
             }}
           />
         </div>

@@ -17,7 +17,7 @@ const Navigation = () => {
           Routines
         </NavLink>
 
-        <NavLink to={"/routines/:username"} className=" p-4 hover:text-red-500">
+        <NavLink to={"/routines/me"} className=" p-4 hover:text-red-500">
           MyRoutines
         </NavLink>
         <NavLink to={"/activities"} className=" p-4 hover:text-red-500">
